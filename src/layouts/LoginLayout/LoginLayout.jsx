@@ -2,6 +2,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Menubar from "../../pages/Menubar/Menubar";
+import Services from "../../pages/Services/Services";
 
 const LoginLayout = () => {
   return (

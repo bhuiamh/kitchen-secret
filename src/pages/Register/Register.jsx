@@ -2,13 +2,18 @@
 import SocialLoginBtn from "./../SocialLoginBtn/SocialLoginBtn";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Link } from "react-router-dom";
+import { FaEye, FaEyeDropper, FaRegEye } from "react-icons/fa";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const [error, setError] = useState("");
 
   const handleRegistration = (event) => {
@@ -28,62 +33,67 @@ const Register = () => {
     }
   };
   return (
-    <div>
-      <div className="container">
-        <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-md-6 ">
-            <div className="border w-100 m-auto text-center p-5">
-              <p className="text-danger">{error}</p>
-              <form action="">
-                <input
-                  onChange={(e) => setName(e.target.value)}
-                  className="email p-3 m-2"
-                  type="text"
-                  placeholder="enter your Name"
-                  required
-                />
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="email p-3 m-2"
-                  type="email"
-                  placeholder="enter your email"
-                />
-                <div className="pass-container">
-                  <input
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="password p-3 m-2"
-                    type="text"
-                    placeholder="type your password"
-                  />
-                  {/* <input
-                    className="password p-3 m-2"
-                    type="password"
-                    placeholder="enter your password"
-                  /> */}
-                  {/* <button>toggle</button> */}
-                </div>
-                <button
-                  onClick={handleRegistration}
-                  className="btn btn-info w-75 p-2 mt-3"
-                >
-                  Register
-                </button>
-                <p className="p-2">
-                  <small className="text-info">
-                    already have account? login here..
-                  </small>
-                </p>
-              </form>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <img
-              className="w-100"
-              src="https://i.ibb.co/Vmyggr3/undraw-Login-re-4vu2.png"
-              alt=""
-            />
-          </div>
+    <div className="container" style={{ paddingTop: "125px" }}>
+      <div className="border border-danger w-50 m-auto text-center p-5">
+        <div className="card-header text-center">
+          <h2 className="mb-0">Create an Account</h2>
         </div>
+        <p className="text-danger">{error}</p>
+        <form action="">
+          <input
+            onChange={(e) => setName(e.target.value)}
+            className="p-3 m-2 form-control"
+            type="text"
+            placeholder="Enter Your Name"
+            required
+          />
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            className="form-control p-3 m-2"
+            type="email"
+            placeholder="Enter Your Email"
+          />
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            className="form-control p-3 m-2"
+            type="text"
+            placeholder="Profile Picture Link"
+          />
+
+          <div className="input-group">
+            <input
+              type={showPassword ? "text" : "password"}
+              className="p-3 ms-2 form-control"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button
+              className={`btn ${
+                showPassword ? "btn-secondary" : "btn-primary"
+              }`}
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
+
+          <button onClick={handleRegistration} className="btn btn-primary my-3">
+            Register
+          </button>
+          <p className="mb-3">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-decoration-none text-primary fw-bold"
+            >
+              Login
+            </Link>
+          </p>
+        </form>
+        <p>Or log using</p>
         <SocialLoginBtn></SocialLoginBtn>
       </div>
     </div>

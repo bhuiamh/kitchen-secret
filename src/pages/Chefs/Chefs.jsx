@@ -22,7 +22,7 @@ const Chefs = () => {
         {chefsData[0]?.chefs?.map((chefs) => (
           <Col
             key={chefs?.id}
-            className="card mb-3 me-3 p-2"
+            className="card mb-3 me-3 p-2 shadow"
             style={{
               maxWidth: "540px",
               backgroundImage:

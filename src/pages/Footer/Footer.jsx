@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-dark mt-5 py-3 py-md-5">
       <div className="container px-md-5 px-lg-5 d-flex flex-column flex-md-row justify-content-between align-items-center">
         <p className="fs-4 fw-light text-light mb-0 mb-md-0">
-          Copyright © 2023 By Mahmudul Hasan Bhuia.
+          Copyright © 2023 By Kitchen Secret
         </p>
         <div className="d-flex flex-wrap justify-content-between">
           <a href="https://twitter.com" className="me-3 mb-3 mb-md-0">

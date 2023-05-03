@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-
 import SocialLoginBtn from "../SocialLoginBtn/SocialLoginBtn";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { FaFacebookF, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -47,8 +45,15 @@ const Login = () => {
             Login
           </button>
           <p className="mb-3">
-            Are you new ? <Link to="/register">Register</Link>
+            Are you new?{" "}
+            <Link
+              to="/register"
+              className="text-decoration-none text-primary fw-bold"
+            >
+              Register
+            </Link>
           </p>
+
           <hr />
 
           <SocialLoginBtn />

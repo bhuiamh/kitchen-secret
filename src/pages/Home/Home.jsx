@@ -2,31 +2,31 @@
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
-  const [servicesData, setServicesData] = useState([]);
+  const [chefsData, setChefsData] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/")
       .then((result) => result.json())
-      .then((data) => setServicesData(data));
+      .then((data) => setChefsData(data));
   }, []);
-  console.log(servicesData);
+  console.log(chefsData);
   return (
     <div>
-      <h1>Our Services</h1>
-      <div className="services">
-        {servicesData.services.map((service) => (
-          <div key={service.id} className="service-card">
-            <h2>{service.name}</h2>
-            <p>{service.description}</p>
+      <h1>Our Chefs</h1>
+      <div className="chefs">
+        {chefsData.chefs.map((chefs) => (
+          <div key={chefs.id} className="chefs-card">
+            <h2>{chefs.name}</h2>
+            <p>{chefs.description}</p>
             <ul>
-              {service.items.map((item) => (
+              {chefs.items.map((item) => (
                 <li key={item.id}>
                   {item.name} - ${item.price}
                 </li>
               ))}
             </ul>
-            <p>Price: ${service.price}</p>
-            <p>Duration: {service.duration}</p>
+            <p>Price: ${chefs.price}</p>
+            <p>Duration: {chefs.duration}</p>
           </div>
         ))}
       </div>

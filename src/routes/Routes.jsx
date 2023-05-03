@@ -1,13 +1,12 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout/LoginLayout";
-import ServicesLayout from "../layouts/ServicesLayout/ServicesLayout";
+import ChefsLayout from "../layouts/ChefsLayout/ChefsLayout";
 import Login from "../pages/Login/Login";
-import Services from "../pages/Services/Services";
-import ServiceDetails from "./../pages/ServiceDetails/ServiceDetails";
+import Chefs from "../pages/Chefs/Chefs";
+import ChefsDetails from "../pages/ChefsDetails/ChefsDetails";
 import Register from "./../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import Blog from "../pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -20,28 +19,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/",
-        element: <Services></Services>,
+        element: <Chefs></Chefs>,
       },
       {
         path: "register",
         element: <Register></Register>,
       },
+      {
+        path: "blog",
+        element: <Blog></Blog>,
+      },
     ],
   },
 
   {
-    path: "services",
-    element: <ServicesLayout></ServicesLayout>,
+    path: "Chefs",
+    element: <ChefsLayout></ChefsLayout>,
     children: [
       {
-        path: "/services",
-        element: <Services></Services>,
+        path: "/Chefs",
+        element: <Chefs></Chefs>,
       },
       {
         path: ":id",
         element: (
           <PrivateRoute>
-            <ServiceDetails></ServiceDetails>
+            <ChefsDetails></ChefsDetails>
           </PrivateRoute>
         ),
       },

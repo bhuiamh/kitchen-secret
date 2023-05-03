@@ -3,7 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-const ServiceDetails = () => {
+const ChefsDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const ServiceDetails = () => {
   }, []);
 
   console.log(id);
-  return <div>ServiceDetails page</div>;
+  return <div>ChefsDetails page</div>;
 };
 
-export default ServiceDetails;
+export default ChefsDetails;

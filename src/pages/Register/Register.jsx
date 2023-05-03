@@ -3,7 +3,6 @@ import SocialLoginBtn from "./../SocialLoginBtn/SocialLoginBtn";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
-import { FaEye, FaEyeDropper, FaRegEye } from "react-icons/fa";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
@@ -18,8 +17,13 @@ const Register = () => {
 
   const handleRegistration = (event) => {
     event.preventDefault();
-    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-      setError("password not valid need 8 char ");
+    // if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+    //   setError("password not valid need 8 char ");
+    //   return;
+    // }
+    setError("");
+    if (!/[0-9]/.test(password)) {
+      setError("Password must have at least one digit.");
       return;
     }
     if ((name, email, password)) {
@@ -54,7 +58,7 @@ const Register = () => {
             placeholder="Enter Your Email"
           />
           <input
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setImage(e.target.value)}
             className="form-control p-3 m-2"
             type="text"
             placeholder="Profile Picture Link"
@@ -68,6 +72,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              style={error ? { border: "3px solid red" } : { border: "none" }}
             />
             <button
               className={`btn ${

@@ -15,8 +15,10 @@ const Chefs = () => {
   console.log(chefsData);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
-      <h1 className="fs-1 text-center text-danger fw-bold">Our top Chefs</h1>
-      <Row xs={1} md={2}>
+      <h1 className="fs-1 text-center text-danger fw-bold mb-4">
+        Our top Chefs
+      </h1>
+      <Row xs={1} md={2} className="mx-auto">
         {chefsData[0]?.chefs?.map((chefs) => (
           <Col
             key={chefs?.id}

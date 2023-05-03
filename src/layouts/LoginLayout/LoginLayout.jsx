@@ -3,6 +3,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Menubar from "../../pages/Menubar/Menubar";
 import Chefs from "../../pages/Chefs/Chefs";
+import Footer from "../../pages/Footer/Footer";
 
 const LoginLayout = () => {
   return (
@@ -17,6 +18,7 @@ const LoginLayout = () => {
     >
       <Menubar></Menubar>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import ChefsDetails from "../pages/ChefsDetails/ChefsDetails";
 import Register from "./../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import Blog from "../pages/Blog/Blog";
+import CarouselDesign from "../pages/Design/CarouselDesign";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
         path: "/",
         element: (
           <div>
+            <CarouselDesign></CarouselDesign>
             <Chefs></Chefs>
           </div>
         ),

@@ -61,19 +61,6 @@ const ChefsDetails = () => {
                       </p>
                     ))}
                   </div>
-
-                  {/* <p className="ms-2 my-0 text-light">
-                    <span className="text-warning fs-5 fw-bold">1.</span>
-                    {chefDetails.cooking_items[0]}
-                  </p>
-                  <p className="ms-2 my-0 text-light">
-                    <span className="text-warning fs-5 fw-bold">2.</span>
-                    {chefDetails.cooking_items[1]}
-                  </p>
-                  <p className="ms-2 my-0 text-light">
-                    <span className="text-warning fs-5 fw-bold">3.</span>
-                    {chefDetails.cooking_items[2]}
-                  </p> */}
                 </div>
               </div>
             </div>

@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 const ChefsLayout = () => {
   return (
     <div>
-      Hello from app
       <Menubar></Menubar>
       <Outlet></Outlet>
     </div>

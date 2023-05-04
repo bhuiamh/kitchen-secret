@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -23,7 +22,7 @@ const ChefsDetails = () => {
           background: "linear-gradient(to right, #f2d50f, #da0641)",
         }}
       >
-        <div className="container py-5">
+        {/* <div className="container py-5">
           {chefDetails.map((chef) => (
             <div
               key={chef.id}
@@ -91,7 +90,7 @@ const ChefsDetails = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
       <div className="btn btn-success w-100 mx-auto mt-3">
         <Nav.Link className="text-light fs-5 fw-bold" as={Link} to="/">

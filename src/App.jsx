@@ -4,7 +4,6 @@ import Menubar from "./pages/Menubar/Menubar";
 const App = () => {
   return (
     <div>
-      Hello from app
       <Menubar></Menubar>
     </div>
   );

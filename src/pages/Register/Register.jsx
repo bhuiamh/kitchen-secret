@@ -17,15 +17,23 @@ const Register = () => {
 
   const handleRegistration = (event) => {
     event.preventDefault();
-    // if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-    //   setError("password not valid need 8 char ");
-    //   return;
-    // }
+
     setError("");
-    if (!/[0-9]/.test(password)) {
-      setError("Password must have at least one digit.");
+
+    if (!/^(?=.*[0-9])/.test(password)) {
+      setError("⚠️ Password must have at least one number");
+      return;
+    } else if (!/^(?=.*[A-Z])/.test(password)) {
+      setError("⚠️ Password must have at least one uppercase letter");
+      return;
+    } else if (!/^(?=.*[@$!%*#?&])/.test(password)) {
+      setError("Password must have at least one special character.");
+      return;
+    } else if (!/^(?=.{8,})/.test(password)) {
+      setError("Password must be at least 8 characters long.");
       return;
     }
+
     if ((name, email, password)) {
       registerUser(email, password)
         .then((result) => {

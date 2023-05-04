@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import SocialLoginBtn from "./../SocialLoginBtn/SocialLoginBtn";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const { registerUser, handleUpdateProfile } = useContext(AuthContext);
@@ -23,15 +23,16 @@ const Register = () => {
 
     if (!/^(?=.*[0-9])/.test(password)) {
       setError("⚠️ Password must have at least one number");
+      toast.error("Password must have at least one number");
       return;
     } else if (!/^(?=.*[A-Z])/.test(password)) {
       setError("⚠️ Password must have at least one uppercase letter");
       return;
     } else if (!/^(?=.*[@$!%*#?&])/.test(password)) {
-      setError("Password must have at least one special character.");
+      setError("⚠️ Password must have at least one special character.");
       return;
     } else if (!/^(?=.{8,})/.test(password)) {
-      setError("Password must be at least 8 characters long.");
+      setError("⚠️ Password must be at least 8 characters long.");
       return;
     }
 
@@ -39,7 +40,6 @@ const Register = () => {
       registerUser(email, password)
         .then((result) => {
           console.log(result.user);
-          // history.push("/login");
         })
         .catch((err) => {
           console.log(err.message);
@@ -111,8 +111,8 @@ const Register = () => {
             </Link>
           </p>
         </form>
-        <p>Or log using</p>
-        <SocialLoginBtn></SocialLoginBtn>
+        {/* <p>Or log using</p>
+        <SocialLoginBtn></SocialLoginBtn> */}
       </div>
     </div>
   );

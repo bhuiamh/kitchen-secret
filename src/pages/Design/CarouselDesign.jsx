@@ -1,4 +1,5 @@
 import { Carousel } from "react-bootstrap";
+import { toast } from "react-hot-toast";
 
 const styles = {
   overlay: {

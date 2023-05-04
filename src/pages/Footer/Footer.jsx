@@ -16,7 +16,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-light py-5">
+    <footer className="bg-black text-light py-5 mt-5">
       <div className="container d-flex flex-wrap justify-content-between">
         <div className="col-md-4 mb-4 mb-md-0">
           <div className="d-flex flex-column">

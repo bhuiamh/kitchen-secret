@@ -10,11 +10,14 @@ import Blog from "../pages/Blog/Blog";
 import CarouselDesign from "../pages/Design/CarouselDesign";
 import About from "../pages/Design/About";
 import SendFeedback from "../pages/Design/SendFeedback";
+import Footer from "../pages/Footer/Footer";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginLayout></LoginLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "login",
@@ -45,6 +48,7 @@ const router = createBrowserRouter([
   {
     path: "Chefs",
     element: <ChefsLayout></ChefsLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/Chefs",
@@ -55,6 +59,7 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ChefsDetails></ChefsDetails>
+            <Footer></Footer>
           </PrivateRoute>
         ),
       },

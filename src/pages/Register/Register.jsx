@@ -5,7 +5,8 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser, handleUpdateProfile } = useContext(AuthContext);
+  // const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
@@ -38,10 +39,14 @@ const Register = () => {
       registerUser(email, password)
         .then((result) => {
           console.log(result.user);
+          // history.push("/login");
         })
         .catch((err) => {
           console.log(err.message);
         });
+      handleUpdateProfile(image)
+        .then((result) => console.log(result))
+        .catch((error) => console.log(error));
     }
   };
   return (

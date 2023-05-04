@@ -1,14 +1,50 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import SocialLoginBtn from "../SocialLoginBtn/SocialLoginBtn";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
 
 const Login = () => {
+  const gitHubProvider = new GithubAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+
+  const auth = getAuth();
   const { loginUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleGoogleLogIn = (event) => {
+    event.preventDefault();
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
+
+  const handleGitHubLogIn = (event) => {
+    event.preventDefault();
+    signInWithPopup(auth, gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -56,7 +92,19 @@ const Login = () => {
 
           <hr />
 
-          <SocialLoginBtn />
+          <div className="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <button
+              className="btn mb-3 mb-sm-0"
+              style={{ backgroundColor: "#F97B22", color: "white" }}
+              onClick={handleGoogleLogIn}
+            >
+              <FaGoogle className="me-2" /> Login with Google
+            </button>
+
+            <button className="btn btn-secondary" onClick={handleGitHubLogIn}>
+              <FaGithub className="me-2" /> Login with Github
+            </button>
+          </div>
         </form>
       </div>
     </div>

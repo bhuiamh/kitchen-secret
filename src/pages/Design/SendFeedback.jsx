@@ -8,10 +8,6 @@ function SendFeedback() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Name:", replyName);
-    console.log("Email:", replyEmail);
-    console.log("Feedback:", feedback);
-    // Here you could add your logic to submit the feedback to a backend service or API
   };
 
   return (

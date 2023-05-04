@@ -6,15 +6,11 @@ import logo from "../../assets/nav-logo.png";
 
 const Menubar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user?.email);
   const handleLogout = () => {
     logOut()
       .then()
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
-  console.log("user", user);
   return (
     <Navbar className="mt-3 mx-3 rounded" bg="success" expand="lg" fixed="top">
       <Container className="d-flex mx-auto">

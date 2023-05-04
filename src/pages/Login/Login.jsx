@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -50,12 +49,8 @@ const Login = () => {
     event.preventDefault();
     if ((email, password)) {
       loginUser(email, password)
-        .then((result) => {
-          console.log(result.user);
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
+        .then((result) => {})
+        .catch((error) => {});
     }
   };
   return (

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
@@ -6,7 +5,6 @@ import { toast } from "react-hot-toast";
 
 const Register = () => {
   const { registerUser, handleUpdateProfile } = useContext(AuthContext);
-  // const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
@@ -38,15 +36,8 @@ const Register = () => {
 
     if ((name, email, password)) {
       registerUser(email, password)
-        .then((result) => {
-          console.log(result.user);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-      handleUpdateProfile(image)
-        .then((result) => console.log(result))
-        .catch((error) => console.log(error));
+        .then((result) => {})
+        .catch((err) => {});
     }
   };
   return (
@@ -111,8 +102,6 @@ const Register = () => {
             </Link>
           </p>
         </form>
-        {/* <p>Or log using</p>
-        <SocialLoginBtn></SocialLoginBtn> */}
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { FaHeart, FaTwitter } from "react-icons/fa";
 import { Card, Col, Row } from "react-bootstrap";
@@ -12,7 +11,6 @@ const Chefs = () => {
       .then((data) => setChefsData(data));
   }, []);
 
-  console.log(chefsData);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
       <h1 className="fs-1 text-center text-danger fw-bold mb-4">

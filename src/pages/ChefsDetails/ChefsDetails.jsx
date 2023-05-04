@@ -12,7 +12,6 @@ const ChefsDetails = () => {
       .then((res) => res.json())
       .then((data) => setChefDetails(data.item));
   }, []);
-  console.log("detail", chefDetails);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
       <div

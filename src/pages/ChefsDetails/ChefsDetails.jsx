@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { Nav } from "react-bootstrap";
+// import { useEffect } from "react";
+import { Nav, Button } from "react-bootstrap";
+import { FaHeart } from "react-icons/fa";
 
 const ChefsDetails = () => {
   const { id } = useParams();
   const [chefDetails, setChefDetails] = useState("");
+  const [disabled, setDisabled] = useState(false);
+
+  const handleClick = () => {
+    alert("Button clicked!");
+    setDisabled(true);
+  };
 
   useEffect(() => {
     fetch(`https://server-asignment10-bhuiamh.vercel.app/allData/${id}`)
@@ -26,7 +33,8 @@ const ChefsDetails = () => {
             className="row justify-content-center align-items-center mb-4"
           >
             <div className=" d-flex justify-content-start col-md-6 order-md-2 mb-3 mb-md-0">
-              <div className="text-start text-md-left">
+              <div style={{ borderLeft: "4px solid black" }}></div>
+              <div className="ps-3 my-auto text-start text-md-left">
                 <h2 className="text-light fw-bold mt-2">{chefDetails.name}</h2>
                 <p className="text-light mb-0">
                   <span className="text-warning fw-bold fs-4">
@@ -50,41 +58,52 @@ const ChefsDetails = () => {
                   Top Must-Try Dishes from the Expert Chef
                 </h1>
                 <div>
-                  <div>
-                    {chefDetails?.cooking_items?.map((item, index) => (
-                      <p key={index} className="ms-2 my-0 text-light">
-                        <span className="text-warning fs-5 fw-bold">
-                          {index + 1}.
-                        </span>{" "}
-                        {item}
-                      </p>
-                    ))}
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      {chefDetails?.cooking_items?.map((item, index) => (
+                        <p key={index} className="ms-2 my-0 text-light">
+                          <span className="text-warning fs-5 fw-bold">
+                            {index + 1}.
+                          </span>{" "}
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                    <div className="d-flex align-items-center">
+                      <Button
+                        className={
+                          disabled
+                            ? "btn btn-outline-light"
+                            : "bg-white text-black"
+                        }
+                        onClick={handleClick}
+                        disabled={disabled}
+                      >
+                        <FaHeart />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-md-6 order-md-1">
-              <div className="d-flex justify-content-end ext-center">
+              <div className="d-flex justify-content-end align-items-center ext-center">
                 <img
                   src={chefDetails.picture}
                   alt={chefDetails.name}
-                  className="rounded img-fluid d-none d-md-block"
-                  style={{
-                    height: "300px",
-                    width: "300px",
-                    border: "5px solid #fff",
-                  }}
-                />
-                <img
-                  src={chefDetails.picture}
-                  alt={chefDetails.name}
-                  className="rounded img-fluid d-block d-md-none"
+                  className="rounded img-fluid "
                   style={{
                     height: "200px",
-                    width: "200px",
+                    width: "150px",
                     border: "5px solid #fff",
                   }}
                 />
+
+                <div>
+                  <p className="ms-3 my-auto d-none d-md-block">
+                    {chefDetails.bio}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

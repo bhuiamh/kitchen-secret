@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link, redirect, useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
-import { updateCurrentUser, updateProfile } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { registerUser, handleUpdateProfile, user, auth } =
@@ -20,19 +19,21 @@ const Register = () => {
     event.preventDefault();
 
     setError("");
-
     if (!/^(?=.*[0-9])/.test(password)) {
       setError("⚠️ Password must have at least one number");
-      toast.error("Password must have at least one number");
+      toast.error(error);
       return;
     } else if (!/^(?=.*[A-Z])/.test(password)) {
       setError("⚠️ Password must have at least one uppercase letter");
+      toast.error(error);
       return;
     } else if (!/^(?=.*[@$!%*#?&])/.test(password)) {
       setError("⚠️ Password must have at least one special character.");
+      toast.error(error);
       return;
     } else if (!/^(?=.{8,})/.test(password)) {
       setError("⚠️ Password must be at least 8 characters long.");
+      toast.error(error);
       return;
     }
 
@@ -40,9 +41,9 @@ const Register = () => {
       try {
         await registerUser(email, password);
         await handleUpdateProfile(name, image);
-        console.log("Registration and profile update successful");
+        toast.success("Registration and profile update successful");
       } catch (error) {
-        console.log("Registration and profile update error:", error.message);
+        toast.error("Registration and profile update error:", error.message);
       }
     }
   };
@@ -52,7 +53,6 @@ const Register = () => {
       navigate("/");
     }
   }, [user]);
-  console.log(user);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
       <div className="border border-danger w-50 m-auto text-center p-5">
@@ -115,6 +115,7 @@ const Register = () => {
           </p>
         </form>
       </div>
+      <Toaster></Toaster>
     </div>
   );
 };

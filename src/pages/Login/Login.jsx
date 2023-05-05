@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 import {
   getAuth,
@@ -16,7 +17,7 @@ const Login = () => {
   const googleProvider = new GoogleAuthProvider();
 
   const auth = getAuth();
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, user } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -49,10 +50,20 @@ const Login = () => {
     event.preventDefault();
     if ((email, password)) {
       loginUser(email, password)
-        .then((result) => {})
-        .catch((error) => {});
+        .then((result) => {
+          toast.success("Login Successful");
+        })
+        .catch((error) => {
+          toast.error("Failed", ":", error.message);
+        });
     }
   };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
       <div className="border border-danger w-50 m-auto text-center p-5">
@@ -102,6 +113,7 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <Toaster></Toaster>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 // import { useEffect } from "react";
-import { Nav, Button } from "react-bootstrap";
+import { Nav, Button, Toast } from "react-bootstrap";
 import { FaHeart } from "react-icons/fa";
+import { Toaster, toast } from "react-hot-toast";
 
 const ChefsDetails = () => {
   const { id } = useParams();
@@ -10,8 +11,10 @@ const ChefsDetails = () => {
   const [disabled, setDisabled] = useState(false);
 
   const handleClick = () => {
-    alert("Button clicked!");
     setDisabled(true);
+    const chefDetailsName = chefDetails.name;
+    const toastMessage = chefDetailsName + "is added to favorite";
+    toast.success(toastMessage);
   };
 
   useEffect(() => {
@@ -114,6 +117,7 @@ const ChefsDetails = () => {
           Home
         </Nav.Link>
       </div>
+      <Toaster></Toaster>
     </div>
   );
 };

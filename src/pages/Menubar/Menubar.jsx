@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import Tooltip from "@mui/material/Tooltip";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import logo from "../../assets/nav-logo.png";
@@ -66,18 +67,19 @@ const Menubar = () => {
         {user && (
           <div className="d-none d-md-block">
             <div className="d-flex align-items-center">
-              <h1 className="fs-6 text-light me-3">
+              <h1 className="fs-6 text-light me-3" data-tip={user?.di}>
                 {" "}
-                Login as{" "}
-                <span className="fs-6 text-info">{user?.displayName}</span>
+                Login with <span className="fs-6 text-info">{user?.email}</span>
               </h1>
-              <img
-                src={user?.photoURL}
-                alt="User Photo"
-                width="50"
-                height="auto"
-                className="rounded-circle border border-danger"
-              />
+              <Tooltip title={user?.displayName}>
+                <img
+                  src={user?.photoURL}
+                  alt="User Photo"
+                  width="50"
+                  height="auto"
+                  className="rounded-circle border border-danger"
+                />
+              </Tooltip>
             </div>
           </div>
         )}

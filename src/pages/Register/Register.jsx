@@ -36,13 +36,6 @@ const Register = () => {
       return;
     }
 
-    // if ((name, email, password)) {
-    //   registerUser(email, password);
-    //   handleUpdateProfile(name, image)
-    //     .then((result) => {})
-    //     .catch((err) => {});
-    // }
-
     if (name && email && password) {
       try {
         await registerUser(email, password);
@@ -53,7 +46,6 @@ const Register = () => {
       }
     }
   };
-  // console.log("come from register", name, image);
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {

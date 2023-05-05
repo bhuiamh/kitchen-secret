@@ -1,15 +1,22 @@
 import React from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import { Link } from "react-router-dom";
 
 const Blog = () => {
+  const handleOpenToast = (event) => {
+    event.preventDefault();
+    toast("Here is your toast.");
+  };
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
       <div className="row justify-content-center mt-5">
+        <Toaster></Toaster>
         <div className="col-md-8">
           <div className="card shadow-lg">
             <div className="card-body">
               <h2 className="card-title text-center">React Blog</h2>
+              <button onClick={handleOpenToast}>Open Toast</button>
               <hr style={{ border: "3px solid black" }} />
               <h3 className="mt-4">
                 What is the differences between Uncontrolled and Controlled

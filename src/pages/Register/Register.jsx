@@ -1,10 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { updateCurrentUser, updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { registerUser, handleUpdateProfile } = useContext(AuthContext);
+  const { registerUser, handleUpdateProfile, user, auth } =
+    useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
@@ -14,7 +16,7 @@ const Register = () => {
 
   const [error, setError] = useState("");
 
-  const handleRegistration = (event) => {
+  const handleRegistration = async (event) => {
     event.preventDefault();
 
     setError("");
@@ -34,12 +36,31 @@ const Register = () => {
       return;
     }
 
-    if ((name, email, password)) {
-      registerUser(email, password)
-        .then((result) => {})
-        .catch((err) => {});
+    // if ((name, email, password)) {
+    //   registerUser(email, password);
+    //   handleUpdateProfile(name, image)
+    //     .then((result) => {})
+    //     .catch((err) => {});
+    // }
+
+    if (name && email && password) {
+      try {
+        await registerUser(email, password);
+        await handleUpdateProfile(name, image);
+        console.log("Registration and profile update successful");
+      } catch (error) {
+        console.log("Registration and profile update error:", error.message);
+      }
     }
   };
+  // console.log("come from register", name, image);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
+  console.log(user);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
       <div className="border border-danger w-50 m-auto text-center p-5">
@@ -47,7 +68,7 @@ const Register = () => {
           <h2 className="mb-0">Create an Account</h2>
         </div>
         <p className="text-danger">{error}</p>
-        <form action="">
+        <form action="" onSubmit={handleRegistration}>
           <input
             onChange={(e) => setName(e.target.value)}
             className="p-3 m-2 form-control"
@@ -66,6 +87,7 @@ const Register = () => {
             className="form-control p-3 m-2"
             type="text"
             placeholder="Profile Picture Link"
+            required
           />
 
           <div className="input-group">
@@ -89,9 +111,7 @@ const Register = () => {
             </button>
           </div>
 
-          <button onClick={handleRegistration} className="btn btn-primary my-3">
-            Register
-          </button>
+          <button className="btn btn-primary my-3">Register</button>
           <p className="mb-3">
             Already have an account?{" "}
             <Link

@@ -18,8 +18,16 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const handleUpdateProfile = (photoUrl) => {
-    return updateProfile(auth.currentUser, { photoURL: photoUrl });
+  const handleUpdateProfile = async (name, image) => {
+    try {
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: image,
+      });
+      console.log("Profile update successful");
+    } catch (error) {
+      console.log("Profile update error:", error.message);
+    }
   };
 
   const registerUser = (email, password) => {

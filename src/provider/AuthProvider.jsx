@@ -11,6 +11,7 @@ import {
 import app from "./../firebase/firebase.config";
 import { useState } from "react";
 import { useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -24,9 +25,10 @@ const AuthProvider = ({ children }) => {
         displayName: name,
         photoURL: image,
       });
-      console.log("Profile update successful");
+      toast.success("Profile update successful");
     } catch (error) {
-      console.log("Profile update error:", error.message);
+      const toastError = "Profile update error:" + error.message;
+      toast.error(toastError);
     }
   };
 
@@ -59,7 +61,10 @@ const AuthProvider = ({ children }) => {
     handleUpdateProfile,
   };
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+      <Toaster></Toaster>
+    </AuthContext.Provider>
   );
 };
 

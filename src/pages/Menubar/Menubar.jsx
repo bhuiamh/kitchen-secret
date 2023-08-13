@@ -38,13 +38,6 @@ const Menubar = () => {
             >
               Registration
             </Nav.Link>
-            <Nav.Link
-              className="text-warning fs-5 fw-bold"
-              as={Link}
-              to="/blog"
-            >
-              Blog
-            </Nav.Link>
             {user?.uid ? (
               <Nav.Link
                 onClick={handleLogout}

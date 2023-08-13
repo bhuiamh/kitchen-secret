@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
@@ -66,7 +65,7 @@ const Login = () => {
   }, [user]);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
-      <div className="border border-danger w-50 m-auto text-center p-5">
+      <div className="border border-danger md:w-50 m-auto text-center p-5">
         <form action="">
           <input
             onChange={(e) => setEmail(e.target.value)}

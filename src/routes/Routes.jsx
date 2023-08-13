@@ -6,7 +6,6 @@ import Chefs from "../pages/Chefs/Chefs";
 import ChefsDetails from "../pages/ChefsDetails/ChefsDetails";
 import Register from "./../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
-import Blog from "../pages/Blog/Blog";
 import CarouselDesign from "../pages/Design/CarouselDesign";
 import About from "../pages/Design/About";
 import SendFeedback from "../pages/Design/SendFeedback";
@@ -37,10 +36,6 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
-      },
-      {
-        path: "blog",
-        element: <Blog></Blog>,
       },
     ],
   },

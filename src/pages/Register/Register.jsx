@@ -55,11 +55,11 @@ const Register = () => {
   }, [user]);
   return (
     <div className="container" style={{ paddingTop: "125px" }}>
-      <div className="border border-danger w-50 m-auto text-center p-5">
+      <div className="border border-danger md:w-50 m-auto text-center p-5">
         <div className="card-header text-center">
           <h2 className="mb-0">Create an Account</h2>
         </div>
-        <p className="text-danger">{error}</p>
+        <p className="text-danger mb-2">{error}</p>
         <form action="" onSubmit={handleRegistration}>
           <input
             onChange={(e) => setName(e.target.value)}
